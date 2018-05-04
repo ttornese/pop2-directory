@@ -6,21 +6,13 @@ import {
 } from 'react-router-dom';
 
 import Header from './components/shared/Header';
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
+import HomePage from './components/HomePage/HomePage';
 
 const BasicExample = () => (
   <Router>
     <div>
       <Header />
-
-      <hr/>
-
-      <Route exact path="/" component={Home}/>
+      <Route exact path="/" component={HomePage}/>
     </div>
   </Router>
 )
