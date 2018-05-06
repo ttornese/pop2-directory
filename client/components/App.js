@@ -2,17 +2,18 @@ import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Link
 } from 'react-router-dom';
 
-import Header from './components/shared/Header';
-import HomePage from './components/HomePage/HomePage';
+import Header from './shared/Header';
+import HomePage from './HomePage/HomePage';
+import TrackPage from './TrackPage/TrackPage';
 
 const BasicExample = () => (
   <Router>
     <div>
       <Header />
       <Route exact path="/" component={HomePage}/>
+      <Route exact path="/track" component={TrackPage}/>
     </div>
   </Router>
 )

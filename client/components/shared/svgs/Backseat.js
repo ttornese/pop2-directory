@@ -6,22 +6,22 @@ const Backseat = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1545 96">
       <defs>
         <linearGradient id="a" x2="2000" y1="2000" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="#FFF">
+          <stop offset="0" stopColor="#FFF">
             <animate attributeName="offset" dur="3s" repeatCount="indefinite" values="0;0;0;0;0;0;0;"/>
           </stop>
-          <stop offset=".17" stop-color="#E8CAE1">
+          <stop offset=".17" stopColor="#E8CAE1">
             <animate attributeName="offset" dur="6s" repeatCount="indefinite" values=".15;.17;.23;.25;.23;.17;.15;"/>
           </stop>
-          <stop offset=".27" stop-color="#5A478A">
+          <stop offset=".27" stopColor="#5A478A">
             <animate attributeName="offset" dur="6s" repeatCount="indefinite" values=".25;.27;.33;.35;.33;.27;.25;"/>
           </stop>
-          <stop offset=".37" stop-color="#D2EBE2">
+          <stop offset=".37" stopColor="#D2EBE2">
             <animate attributeName="offset" dur="6s" repeatCount="indefinite" values=".35;.37;.48;.5;.48;.37;.35;"/>
           </stop>
-          <stop offset=".57" stop-color="#71C2ED">
+          <stop offset=".57" stopColor="#71C2ED">
             <animate attributeName="offset" dur="6s" repeatCount="indefinite" values=".5;.57;.73;.75;.73;.57;.5;"/>
           </stop>
-          <stop offset=".77" stop-color="#F37677">
+          <stop offset=".77" stopColor="#F37677">
             <animate attributeName="offset" dur="6s" repeatCount="indefinite" values=".75;.77;.98;1;.98;.77;.75;"/>
           </stop>
         </linearGradient>
