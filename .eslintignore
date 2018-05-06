@@ -1,0 +1,7 @@
+build/
+
+client/components/shared/svgs/
+
+node_modules/
+
+server
