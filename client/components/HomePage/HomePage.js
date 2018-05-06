@@ -17,7 +17,11 @@ import Track10 from '../shared/svgs/Track10';
 const HomePageWrapper = styled.div`
   display: grid;
   justify-items: center;
-  margin: 0 15px 40px;
+  margin: 0 0 40px;
+`;
+
+const AlbumArtWrapper = styled.div`
+  width: 100%;
 `;
 
 const AlbumArt = styled.img`
@@ -58,10 +62,9 @@ class HomePage extends Component {
   render() {
     return (
       <HomePageWrapper>
-        {this.state.tracks.map(track => (
-          <p key={`${track.title}-${track.trackNumber}`}>{track.title}</p>
-        ))}
-        <AlbumArt src="http://www.wepluggoodmusic.com/wp-content/uploads/2017/12/charli-xcx-pop-2.jpg" />
+        <AlbumArtWrapper>
+          <AlbumArt src="http://www.wepluggoodmusic.com/wp-content/uploads/2017/12/charli-xcx-pop-2.jpg" />
+        </AlbumArtWrapper>
         <TrackList>
           <LinkWrapper to="/track">
             <Backseat />
