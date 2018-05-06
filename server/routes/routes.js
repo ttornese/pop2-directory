@@ -1,14 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var Track = require('../../models/Track');
+import express from 'express';
+import bodyParser from 'body-parser';
+import Track from '../../models/Track';
 
-router.get('/', function(req, res){
-  res.render('index')
-});
+const router = express.Router();
 
-router.get('/tracks', function(req, res) {
-  Track.find({}, function(err, tracks) {
+router.get('/', (req, res) => res.render('index'));
+
+router.get('/tracks', (req, res) => {
+  Track.find({}, (err, tracks) => {
     if (err)
       res.send(err);
     res.json(tracks);

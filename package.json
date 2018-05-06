@@ -21,7 +21,7 @@
     "webpack-hot-middleware": "^2.22.1"
   },
   "scripts": {
-    "lint": "./node_modules/.bin/eslint ./client",
+    "lint": "./node_modules/.bin/eslint .",
     "webpack": "webpack",
     "start": "npm run webpack && nodemon --exec babel-node -- bin/www"
   },
