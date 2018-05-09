@@ -20,8 +20,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
 
-// actually user creds should go here
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds129374.mlab.com:29374/pop2');
+mongoose.connect('mongodb://admin:admin@ds129374.mlab.com:29374/pop2');
 
 app.use('/', router);
 

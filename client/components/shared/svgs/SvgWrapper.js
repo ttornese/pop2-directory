@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 export default styled.div`
   cursor: pointer;
-  ${props => (props.excludeMargin ? '' : 'margin-bottom: 15px;')}
   width: 100%;
+
+  &:hover {
+    filter: drop-shadow( 0 -0 5px #ed7f7c);
+  }
 `;
