@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+import helpers from '../../../lib/helpers';
+
 const TrackPageWrapper = styled.div`
   display: grid;
   margin: 15px;
@@ -30,18 +32,28 @@ class TrackPage extends Component {
     });
   }
 
-  renderTrack() {
+  renderTitle() {
     return (
       this.state.track ?
-        <h1>{this.state.track.title}</h1> :
+        helpers.tracks.getSvg(this.state.track.title.split(' ').join(''))() :
         null
     );
   }
 
+  renderLyrics() {
+    if (this.state.track) {
+      return (
+        this.state.track.lyrics.split('$').map(paragraph => (
+          <p>{paragraph}</p>
+        ))
+      );
+    }
+  }
   render() {
     return (
       <TrackPageWrapper>
-        {this.renderTrack()}
+        {this.renderTitle()}
+        {this.renderLyrics()}
       </TrackPageWrapper>
     );
   }
