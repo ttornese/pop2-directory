@@ -1,11 +1,14 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+import mongoose from 'mongoose';
 
-var trackSchema = new Schema({
+const Schema = mongoose.Schema;
+
+const trackSchema = new Schema({
   collaborators: Array,
   lyrics: String,
   title: String,
   trackNumber: Number,
 });
 
-module.exports = mongoose.model('Track', trackSchema);
+const Track = mongoose.model('Track', trackSchema);
+
+export default Track;

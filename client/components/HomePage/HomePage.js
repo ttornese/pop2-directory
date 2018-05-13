@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Tracklist from '../shared/Tracklist';
@@ -29,25 +28,31 @@ const HomePageTracklistWrapper = styled.div`
 class HomePage extends Component {
   constructor() {
     super();
-    this.state = { tracks: [] };
+    this.state = {
+      album: {
+        artist: '',
+        title: '',
+        tracks: [],
+      },
+    };
   }
 
   componentDidMount() {
-    this.fetchTracks();
+    this.fetchAlbum();
   }
 
-  fetchTracks() {
-    axios.get('/tracks').then(response => {
-      this.setState({ tracks: response.data });
+  fetchAlbum() {
+    axios.get('/album').then(response => {
+      this.setState({ album: response.data });
     });
   }
 
   renderTracklist() {
-    let tracklist = null;
-    if (this.state.tracks.length > 0) {
-      tracklist = <Tracklist tracks={this.state.tracks} />;
-    }
-    return tracklist;
+    return (
+      this.state.album.tracks.length > 0 ?
+        <Tracklist tracks={this.state.album.tracks} /> :
+        null
+    );
   }
 
   render() {
@@ -62,6 +67,6 @@ class HomePage extends Component {
       </HomePageWrapper>
     );
   }
-};
+}
 
 export default HomePage;

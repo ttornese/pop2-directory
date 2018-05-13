@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import helpers from '../../../lib/helpers';
 
@@ -15,21 +16,34 @@ const TracklistWrapper = styled.div`
   width: 100%;
 `;
 
-const Track = styled.div`
+const Track = styled(Link)`
   width: 100%;
 `;
 
-const Tracklist = ({ tracks }) => (
-  <TracklistWrapper>
-    {
-      tracks.map(track => (
-        <Track key={`${track.title}-${track.trackNumber}`}>
-          {helpers.tracks.getSvg(track.title.split(' ').join(''))()}
-        </Track>
-      ))
-    }
-  </TracklistWrapper>
-);
+class Tracklist extends Component {
+  splitTrackName(track) {
+    return track.split(' ');
+  }
+
+  render() {
+    const { tracks } = this.props;
+    return (
+      <TracklistWrapper>
+        {
+          tracks.map(track => {
+            const splitTrack = this.splitTrackName(track);
+            const path = splitTrack.join('_').toLowerCase();
+            return (
+              <Track key={`${track}`} to={`tracks/${path}`}>
+                {helpers.tracks.getSvg(splitTrack.join(''))()}
+              </Track>
+            );
+          })
+        }
+      </TracklistWrapper>
+    );
+  }
+};
 
 Tracklist.propTypes = {
   tracks: PropTypes.array.isRequired,

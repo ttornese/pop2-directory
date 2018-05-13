@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -12,9 +12,9 @@ const BasicExample = () => (
   <Router>
     <div>
       <Header />
-      <Route exact path="/" component={HomePage}/>
-      <Route exact path="/track" component={TrackPage}/>
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/tracks/:slug" component={TrackPage} />
     </div>
   </Router>
-)
-export default BasicExample
+);
+export default BasicExample;
