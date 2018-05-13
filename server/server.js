@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
@@ -20,7 +21,11 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
 
-mongoose.connect('mongodb://admin:admin@ds129374.mlab.com:29374/pop2');
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.load();
+}
+
+mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@ds129374.mlab.com:29374/pop2`);
 
 app.use('/', router);
 
