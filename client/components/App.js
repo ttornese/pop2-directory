@@ -13,7 +13,7 @@ const BasicExample = () => (
     <div>
       <Header />
       <Route exact path="/" component={HomePage} />
-      <Route exact path="/tracks/:slug" component={TrackPage} />
+      <Route path="/tracks" component={TrackPage} />
     </div>
   </Router>
 );

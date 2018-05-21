@@ -27,7 +27,7 @@ class TrackPage extends Component {
   }
 
   fetchTrack() {
-    axios.get(document.location.pathname).then(response => {
+    axios.get(`/api${document.location.pathname}`).then(response => {
       this.setState({ track: response.data });
     });
   }
@@ -41,19 +41,30 @@ class TrackPage extends Component {
   }
 
   renderLyrics() {
-    if (this.state.track) {
+    const { track } = this.state;
+    if (track) {
       return (
-        this.state.track.lyrics.split('$').map(paragraph => (
-          <p>{paragraph}</p>
-        ))
+        <Lyrics>
+          {
+            track.lyrics.split('\n').map(paragraph => (
+              <p>
+                {
+                  paragraph.split('|').map(line => (
+                    <span>{line}<br /></span>
+                  ))
+                }
+              </p>
+            ))
+          }
+        </Lyrics>
       );
     }
+    return null;
   }
   render() {
     return (
       <TrackPageWrapper>
         {this.renderTitle()}
-        {this.renderLyrics()}
       </TrackPageWrapper>
     );
   }

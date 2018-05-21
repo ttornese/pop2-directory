@@ -42,7 +42,7 @@ class HomePage extends Component {
   }
 
   fetchAlbum() {
-    axios.get('/album').then(response => {
+    axios.get('/api/album').then(response => {
       this.setState({ album: response.data });
     });
   }
