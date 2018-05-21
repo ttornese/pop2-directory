@@ -65,6 +65,7 @@ class TrackPage extends Component {
     return (
       <TrackPageWrapper>
         {this.renderTitle()}
+        {this.renderLyrics()}
       </TrackPageWrapper>
     );
   }
