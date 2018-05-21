@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import Album from '../../models/Album';
-import Track from '../../models/Track';
+import Album from '../models/Album';
+import Track from '../models/Track';
 
 import path from 'path';
 const router = express.Router();
@@ -21,5 +21,7 @@ router.get('/api/tracks/:slug', (req, res) => {
     res.json(track);
   });
 });
+
+router.get('*', (req, res) => res.render('index'));
 
 module.exports = router;

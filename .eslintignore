@@ -1,6 +1,8 @@
-build/
+dist/
 
-client/components/shared/svgs/
+public/
+
+src/client/components/shared/svgs/
 
 node_modules/
 
