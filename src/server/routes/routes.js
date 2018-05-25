@@ -7,7 +7,7 @@ import path from 'path';
 const router = express.Router();
 
 router.get('/api/album', (req, res) => {
-  Album.findOne({ 'title': 'POP 2' }, (err, album) => {
+  Track.find({}).sort('trackNumber').exec((err, album) => {
     if (err)
       res.send(err);
     res.json(album);
