@@ -6,14 +6,17 @@ import helpers from '../../../lib/helpers';
 
 const TrackPageWrapper = styled.div`
   display: grid;
-  margin: 15px;
 `;
 
-const Lyrics = styled.p`
+const Lyrics = styled.div`
   background-color: #c9c2db;
-  border: solid 2px #ed7f7c;
+  border: solid 16px #ed7f7c;
   color: white;
-  padding: 15px;
+  display: grid;
+  font: 1.8rem 'Orbitron', sans-serif;
+  line-height: 1.13;
+  padding: 1.6rem;
+  row-gap: 1.6rem;
 `;
 
 class TrackPage extends Component {
@@ -38,6 +41,11 @@ class TrackPage extends Component {
         helpers.tracks.getSvg(this.state.track.title.split(' ').join(''))() :
         null
     );
+  }
+
+  renderTrackInfo() {
+    const { track } = this.state;
+    return track && track.trackNumber ? <h3>{`Track No. ${track.trackNumber}`}</h3> : null;
   }
 
   renderLyrics() {
@@ -65,6 +73,7 @@ class TrackPage extends Component {
     return (
       <TrackPageWrapper>
         {this.renderTitle()}
+        {this.renderTrackInfo()}
         {this.renderLyrics()}
       </TrackPageWrapper>
     );

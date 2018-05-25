@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+import theme from '../../../lib/theme';
 import Tracklist from '../shared/Tracklist';
 
 const HomePageWrapper = styled.div`
@@ -20,20 +21,25 @@ const AlbumArt = styled.img`
 `;
 
 const HomePageTracklistWrapper = styled.div`
-  background-color: #ed7f7c;
-  padding: 15px;
+  background-color: black;
+  border-top: 4px solid ${theme.colors.purple};
   width: 100%;
 `;
+
+const HomePageTracklistWrapperExtraBorder = styled.hr`
+  background-color: ${theme.colors.orange};
+  border-color: ${theme.colors.orange};
+  border-top: 2px solid ${theme.colors.orange};
+  margin: 0;
+  width: 100%;
+`;
+
 
 class HomePage extends Component {
   constructor() {
     super();
     this.state = {
-      album: {
-        artist: '',
-        title: '',
-        tracks: [],
-      },
+      tracks: null,
     };
   }
 
@@ -43,14 +49,15 @@ class HomePage extends Component {
 
   fetchAlbum() {
     axios.get('/api/album').then(response => {
-      this.setState({ album: response.data });
+      this.setState({ tracks: response.data });
     });
   }
 
   renderTracklist() {
+    const { tracks } = this.state;
     return (
-      this.state.album.tracks.length > 0 ?
-        <Tracklist tracks={this.state.album.tracks} /> :
+      tracks && tracks.length > 0 ?
+        <Tracklist tracks={tracks} /> :
         null
     );
   }
@@ -62,6 +69,7 @@ class HomePage extends Component {
           <AlbumArt src="http://www.wepluggoodmusic.com/wp-content/uploads/2017/12/charli-xcx-pop-2.jpg" />
         </AlbumArtWrapper>
         <HomePageTracklistWrapper>
+          <HomePageTracklistWrapperExtraBorder />
           {this.renderTracklist()}
         </HomePageTracklistWrapper>
       </HomePageWrapper>
