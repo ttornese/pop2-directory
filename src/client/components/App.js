@@ -3,18 +3,22 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 import Header from './shared/Header';
 import HomePage from './HomePage/HomePage';
+import theme from '../../lib/theme';
 import TrackPage from './TrackPage/TrackPage';
 
 const BasicExample = () => (
   <Router>
-    <div>
-      <Header />
-      <Route exact path="/" component={HomePage} />
-      <Route path="/tracks" component={TrackPage} />
-    </div>
+    <ThemeProvider theme={theme}>
+      <main className="app-wrapper">
+        <Header />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/tracks" component={TrackPage} />
+      </main>
+    </ThemeProvider>
   </Router>
 );
 export default BasicExample;

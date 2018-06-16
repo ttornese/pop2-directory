@@ -2,38 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-import theme from '../../../lib/theme';
-import Tracklist from '../shared/Tracklist';
+import AlbumArt from './AlbumArt';
+import Tracklist from './Tracklist';
 
 const HomePageWrapper = styled.div`
   display: grid;
   justify-items: center;
   margin: 0;
 `;
-
-const AlbumArtWrapper = styled.div`
-  width: 100%;
-`;
-
-const AlbumArt = styled.img`
-  display: block;
-  max-width: 100%;
-`;
-
-const HomePageTracklistWrapper = styled.div`
-  background-color: black;
-  border-top: 4px solid ${theme.colors.purple};
-  width: 100%;
-`;
-
-const HomePageTracklistWrapperExtraBorder = styled.hr`
-  background-color: ${theme.colors.orange};
-  border-color: ${theme.colors.orange};
-  border-top: 2px solid ${theme.colors.orange};
-  margin: 0;
-  width: 100%;
-`;
-
 
 class HomePage extends Component {
   constructor() {
@@ -53,6 +29,10 @@ class HomePage extends Component {
     });
   }
 
+  renderAlbumArt() {
+    return <AlbumArt />;
+  }
+
   renderTracklist() {
     const { tracks } = this.state;
     return (
@@ -65,13 +45,8 @@ class HomePage extends Component {
   render() {
     return (
       <HomePageWrapper>
-        <AlbumArtWrapper>
-          <AlbumArt src="http://www.wepluggoodmusic.com/wp-content/uploads/2017/12/charli-xcx-pop-2.jpg" />
-        </AlbumArtWrapper>
-        <HomePageTracklistWrapper>
-          <HomePageTracklistWrapperExtraBorder />
-          {this.renderTracklist()}
-        </HomePageTracklistWrapper>
+        {this.renderAlbumArt()}
+        {this.renderTracklist()}
       </HomePageWrapper>
     );
   }
