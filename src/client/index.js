@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
+import baseStyles from './styles/index';
 import App from './components/App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const render = () => {
+  baseStyles();
+  ReactDOM.render(<App />, document.getElementById('root'));
+};
+
+render();

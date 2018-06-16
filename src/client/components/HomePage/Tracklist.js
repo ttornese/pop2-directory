@@ -1,0 +1,56 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+import Track from './Track';
+
+const TracklistWrapper = styled.div`
+  background-color: black;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 3.2rem;
+  justify-items: center;
+  max-width: 100%;
+  padding: 16px;
+  width: 100%;
+`;
+
+const TracklistHeader = styled.h2`
+  border-bottom: solid 0.1rem ${(props) => (props.theme.colors.purple)};
+  color: ${(props) => (props.theme.colors.purple)};
+  font: 2.4rem 'Orbitron', sans-serif;
+  font-weight: bold;
+  margin: 0;
+  width: 100%;
+`;
+
+class Tracklist extends Component {
+  splitTrackName(track) {
+    return track.split(' ');
+  }
+
+  render() {
+    const { tracks } = this.props;
+    return (
+      <TracklistWrapper>
+        <TracklistHeader>
+          Tracklist
+        </TracklistHeader>
+        {
+          tracks.map(track => {
+            const splitTrack = this.splitTrackName(track.title);
+            const path = splitTrack.join('_').toLowerCase();
+            return <Track path={path} track={track} />;
+          })
+        }
+      </TracklistWrapper>
+    );
+  }
+}
+
+Tracklist.propTypes = {
+  tracks: PropTypes.array.isRequired,
+};
+
+export default Tracklist;
