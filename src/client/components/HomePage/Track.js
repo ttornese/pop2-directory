@@ -65,7 +65,7 @@ const TrackText = styled.span`
   color: ${({ number, theme: { colors } }) => (number ? colors.white : colors.purple)};
   font: ${(props) => (props.number ? '1.2rem' : '1.4rem')} 'Orbitron', sans-serif;
   ${({ features, number }) => (features || number ? 'align-self: end;' : '')}
-  ${({ features }) => (!features ? 'justify-self: end;' : '')}
+  ${({ number }) => (!number ? '' : 'justify-self: end;')}
 `;
 
 const Track = ({ path, track }) => (
@@ -77,10 +77,14 @@ const Track = ({ path, track }) => (
       {track.title}
     </TrackTitle>
     <TrackText>
-      A.G. Cook, SOPHIE
+      {`prod. by ${track.producers.join(' ')}`}
     </TrackText>
     <TrackText features>
-      ft. cupcakKe,
+      {
+        track.collaborators.length > 0 ?
+        `ft. ${track.collaborators.join(', ')}` :
+        ''
+      }
     </TrackText>
     <TrackText number>
       {track.trackNumber}
