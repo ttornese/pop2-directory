@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Logo from './svgs/Logo';
 
 const HeaderWrapper = styled.nav`
+  background-color: black;
   border-bottom: solid 4px #c9c2db;
   display: grid;
   grid-template-columns: 1fr;

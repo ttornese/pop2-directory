@@ -3,20 +3,34 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import helpers from '../../../lib/helpers';
+import Separator from '../shared/Separator';
 
 const TrackPageWrapper = styled.div`
   display: grid;
 `;
 
-const Lyrics = styled.div`
-  background-color: #c9c2db;
-  border: solid 16px #ed7f7c;
-  color: white;
+const TrackTitleWrapper = styled.div`
+  margin: 1.6rem 0;
+`;
+
+const TrackLyrics = styled.div`
+  border: 2px solid;
+  border-image: linear-gradient(to left top,#866EAC,#A4F2A7,#85EAFF,#FF7676);
+  border-image-slice: 1;
+  background-color: black;
+  color: ${({ theme: { colors: { purple } } }) => (purple)};
   display: grid;
   font: 1.8rem 'Orbitron', sans-serif;
   line-height: 1.13;
   padding: 1.6rem;
-  row-gap: 1.6rem;
+  grid-gap: 1.6rem;
+`;
+
+const ParagraphWrapper = styled.div`
+`;
+
+const Paragraph = styled.div`
+  margin-bottom: 1.6rem;
 `;
 
 class TrackPage extends Component {
@@ -36,11 +50,15 @@ class TrackPage extends Component {
   }
 
   renderTitle() {
-    return (
-      this.state.track ?
-        helpers.tracks.getSvg(this.state.track.title.split(' ').join(''))() :
-        null
-    );
+    let trackTitle = null;
+    if (this.state.track) {
+      trackTitle = (
+        <TrackTitleWrapper>
+          {helpers.tracks.getSvg(this.state.track.title.split(' ').join(''))()}
+        </TrackTitleWrapper>
+      );
+    }
+    return trackTitle;
   }
 
   renderTrackInfo() {
@@ -52,19 +70,22 @@ class TrackPage extends Component {
     const { track } = this.state;
     if (track) {
       return (
-        <Lyrics>
+        <TrackLyrics>
           {
             track.lyrics.split('\n').map(paragraph => (
-              <p>
-                {
-                  paragraph.split('|').map(line => (
-                    <span>{line}<br /></span>
-                  ))
-                }
-              </p>
+              <ParagraphWrapper>
+                <Paragraph key={paragraph}>
+                  {
+                    paragraph.split('|').map(line => (
+                      <span key={line}>{line}<br /></span>
+                    ))
+                  }
+                </Paragraph>
+                <Separator noTop />
+              </ParagraphWrapper>
             ))
           }
-        </Lyrics>
+        </TrackLyrics>
       );
     }
     return null;
@@ -73,7 +94,6 @@ class TrackPage extends Component {
     return (
       <TrackPageWrapper>
         {this.renderTitle()}
-        {this.renderTrackInfo()}
         {this.renderLyrics()}
       </TrackPageWrapper>
     );

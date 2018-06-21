@@ -9,6 +9,23 @@ export default () => injectGlobal`
     font-size: 62.5%;
   }
 
+  body {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ol,
+    ul,
+    p,
+    figure,
+    menu {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
   *,
   *::before,
   *::after {

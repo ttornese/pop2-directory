@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import Track from './Track';
 
 const TracklistWrapper = styled.div`
+  border: 2px solid;
+  border-image: linear-gradient(to left top,#866EAC,#A4F2A7,#85EAFF,#FF7676);
+  border-image-slice: 1;
   background-color: black;
   width: 100%;
   display: grid;
