@@ -72,12 +72,12 @@ class TrackPage extends Component {
       return (
         <TrackLyrics>
           {
-            track.lyrics.split('\n').map(paragraph => (
+            track.lyrics.split('\n').map((paragraph, i) => (
               <ParagraphWrapper>
-                <Paragraph key={paragraph}>
+                <Paragraph key={`paragraph-${i}`}>
                   {
-                    paragraph.split('|').map(line => (
-                      <span key={line}>{line}<br /></span>
+                    paragraph.split('|').map((line, j) => (
+                      <span key={`line-${i}-${j}`}>{line}<br /></span>
                     ))
                   }
                 </Paragraph>
