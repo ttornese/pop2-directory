@@ -11,6 +11,11 @@ const HomePageWrapper = styled.div`
   margin: 0;
 `;
 
+const HomePageTrackListWrapper = styled.div`
+  background-color: black;
+  width: 100%;
+`;
+
 class HomePage extends Component {
   constructor() {
     super();
@@ -35,11 +40,15 @@ class HomePage extends Component {
 
   renderTracklist() {
     const { tracks } = this.state;
-    return (
-      tracks && tracks.length > 0 ?
-        <Tracklist tracks={tracks} /> :
-        null
-    );
+    let trackList = null;
+    if (tracks && tracks.length > 0) {
+      trackList = (
+        <HomePageTrackListWrapper>
+          <Tracklist tracks={tracks} />
+        </HomePageTrackListWrapper>
+      );
+    }
+    return trackList;
   }
 
   render() {

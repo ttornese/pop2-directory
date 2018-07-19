@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
 import Track from './Track';
@@ -14,9 +15,15 @@ const TracklistWrapper = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 3.2rem;
   justify-items: center;
-  max-width: 100%;
+  margin: 0 auto;
+  max-width: 110rem;
   padding: 16px;
   width: 100%;
+
+  ${breakpoint('desktop')`
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1.6rem;
+  `}
 `;
 
 const TracklistHeader = styled.h2`
@@ -26,6 +33,10 @@ const TracklistHeader = styled.h2`
   font-weight: bold;
   margin: 0;
   width: 100%;
+
+  ${breakpoint('desktop')`
+    grid-column: 1/3;
+  `}
 `;
 
 class Tracklist extends Component {

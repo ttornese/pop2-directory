@@ -7,7 +7,9 @@ const AlbumArtWrapper = styled.div`
 
 const AlbumArtImage = styled.img`
   display: block;
-  max-width: 100%;
+  margin: 0 auto;
+  max-width: 110rem;
+  width: 100%;
 `;
 
 const AlbumArt = () => (
