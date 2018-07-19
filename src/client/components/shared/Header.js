@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
 import Logo from './svgs/Logo';
@@ -10,6 +11,16 @@ const HeaderWrapper = styled.nav`
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+`;
+
+const HeaderLink = styled(Link)`
+  ${breakpoint('tablet')`
+    width: 40%;
+  `}
+
+  ${breakpoint('desktop')`
+    width: 30%;
+  `}
 `;
 
 const HeaderExtraBorder = styled.hr`
@@ -23,9 +34,9 @@ const HeaderExtraBorder = styled.hr`
 //  #ed7f7c
 const Header = () => (
   <HeaderWrapper>
-    <Link to="/">
+    <HeaderLink to="/">
       <Logo />
-    </Link>
+    </HeaderLink>
     <HeaderExtraBorder />
   </HeaderWrapper>
 );

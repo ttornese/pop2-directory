@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
 import helpers from '../../../lib/helpers';
@@ -13,6 +14,11 @@ const TrackTitleWrapper = styled.div`
   margin: 1.6rem 0;
 `;
 
+const TrackLyricsWrapper = styled.div`
+  background-color: black;
+  width: 100%;
+`;
+
 const TrackLyrics = styled.div`
   border: 2px solid;
   border-image: linear-gradient(to left top,#866EAC,#A4F2A7,#85EAFF,#FF7676);
@@ -24,9 +30,17 @@ const TrackLyrics = styled.div`
   line-height: 1.13;
   padding: 1.6rem;
   grid-gap: 1.6rem;
+  margin: 1.6rem auto 0;
+  max-width: 110rem;
+  width: 100%;
+
+  ${breakpoint('tablet')`
+    font-size: 2.4rem;
+  `}
 `;
 
 const ParagraphWrapper = styled.div`
+  text-align: center;
 `;
 
 const Paragraph = styled.div`
@@ -70,22 +84,24 @@ class TrackPage extends Component {
     const { track } = this.state;
     if (track) {
       return (
-        <TrackLyrics>
-          {
-            track.lyrics.split('\n').map((paragraph, i) => (
-              <ParagraphWrapper>
-                <Paragraph key={`paragraph-${i}`}>
-                  {
-                    paragraph.split('|').map((line, j) => (
-                      <span key={`line-${i}-${j}`}>{line}<br /></span>
-                    ))
-                  }
-                </Paragraph>
-                <Separator noTop />
-              </ParagraphWrapper>
-            ))
-          }
-        </TrackLyrics>
+        <TrackLyricsWrapper>
+          <TrackLyrics>
+            {
+              track.lyrics.split('\n').map((paragraph, i) => (
+                <ParagraphWrapper>
+                  <Paragraph key={`paragraph-${i}`}>
+                    {
+                      paragraph.split('|').map((line, j) => (
+                        <span key={`line-${i}-${j}`}>{line}<br /></span>
+                      ))
+                    }
+                  </Paragraph>
+                  <Separator noTop />
+                </ParagraphWrapper>
+              ))
+            }
+          </TrackLyrics>
+        </TrackLyricsWrapper>
       );
     }
     return null;

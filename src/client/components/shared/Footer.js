@@ -1,4 +1,5 @@
 import React from 'react';
+import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 
 import AppleMusic from './svgs/AppleMusic';
@@ -18,25 +19,47 @@ const FooterWrapper = styled.div`
 `;
 
 const FooterXCXWrapper = styled.div`
-  margin-bottom: 1.6rem;
+  margin: 3.2rem 0 1.6rem;
   max-width: 75%;
   width: 75%;
+
+  ${breakpoint('tablet')`
+    max-width: 60%;
+  `}
+
+  ${breakpoint('tablet')`
+    max-width: 45%;
+  `}
+
+  &:hover {
+    svg {
+      filter: drop-shadow( 0 -0 15px #ed7f7c);
+    }
+  }
 `;
 
 const FooterSocialWrapper = styled.div`
   display: flex;
   justify-content: space-around;
+  margin-top: 1.6rem;
+  max-width: 110rem;
   width: 100%;
 `;
 
 const FooterSocialLink = styled.a`
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 4.5rem;
+  width: 4.5rem;
 `;
 
 const FooterSocialIcon = styled.div`
   height: 100%;
   width: 100%;
+
+  &:hover {
+    svg {
+      filter: drop-shadow( 0 -0 15px #ed7f7c);
+    }
+  }
 `;
 
 const charliSocial = [
@@ -64,9 +87,6 @@ const charliSocial = [
 
 const Header = () => (
   <FooterWrapper>
-    <FooterXCXWrapper>
-      <XCX />
-    </FooterXCXWrapper>
     <FooterSocialWrapper>
       {
         charliSocial.map(social => (
@@ -81,6 +101,11 @@ const Header = () => (
         ))
       }
     </FooterSocialWrapper>
+    <FooterXCXWrapper>
+      <a href="http://charlixcx.tumblr.com/">
+        <XCX />
+      </a>
+    </FooterXCXWrapper>
   </FooterWrapper>
 );
 

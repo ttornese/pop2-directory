@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -29,6 +30,10 @@ const TrackTitle = styled(Link)`
   &:hover {
     text-shadow: 0 0 0.3rem ${(props) => (props.theme.colors.orange)};
   }
+
+  ${breakpoint('tablet')`
+    font-size: 2.4rem;
+  `}
 `;
 
 const TrackText = styled.span`
@@ -36,6 +41,10 @@ const TrackText = styled.span`
   font: ${(props) => (props.number ? '1.2rem' : '1.4rem')} 'Orbitron', sans-serif;
   ${({ features, number }) => (features || number ? 'align-self: end;' : '')}
   ${({ number }) => (!number ? '' : 'justify-self: end;')}
+
+  ${breakpoint('tablet')`
+    font-size: ${(props) => (props.number ? '1.4rem' : '1.8rem')};
+  `}
 `;
 
 const Track = ({ path, track }) => (
