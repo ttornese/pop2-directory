@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -11,16 +11,28 @@ import HomePage from './HomePage/HomePage';
 import theme from '../../lib/theme';
 import TrackPage from './TrackPage/TrackPage';
 
+class ScrollToTop extends Component {
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
+  render() {
+    return this.props.children;
+  }
+}
+
 const BasicExample = () => (
   <Router>
-    <ThemeProvider theme={theme}>
-      <main className="app-wrapper">
-        <Header />
-        <Route exact path="/" component={HomePage} />
-        <Route path="/tracks" component={TrackPage} />
-        <Footer />
-      </main>
-    </ThemeProvider>
+    <ScrollToTop>
+      <ThemeProvider theme={theme}>
+        <main className="app-wrapper">
+          <Header />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/tracks" component={TrackPage} />
+          <Footer />
+        </main>
+      </ThemeProvider>
+    </ScrollToTop>
   </Router>
 );
 export default BasicExample;
